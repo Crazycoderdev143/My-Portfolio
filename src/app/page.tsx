@@ -17,6 +17,7 @@ import {ElectricTrailHeavy} from "@/components/Animations/ElectricTrailHeavy";
 import {ElectricFlowSparkles} from "@/components/Animations/ElectricFlowSparkles";
 import {ExplodingTrailCanvas} from "@/components/Animations/ExplodingTrailCanvas";
 import {ElectricTrailWithNoise} from "@/components/Animations/ElectricTrailWithNoise";
+import { SocialMediaLinks } from "@/components/ui/SocialMediaLinks";
 
 export default function Home() {
   return (

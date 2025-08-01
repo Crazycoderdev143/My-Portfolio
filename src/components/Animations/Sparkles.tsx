@@ -11,11 +11,15 @@ interface SparklesCoreProps {
   speedMultiplier?: number;
   flicker?: boolean;
   glow?: boolean;
+  shapeSet?: string[]; // ✅ New
   enableClick?: boolean;
 }
 
 const COLORS = ["#22d3ee", "#3b82f6", "#ec4899", "#f59e0b", "#10b981"];
 const SHAPES = ["circle", "square", "triangle", "star"];
+const shapeSet = ["star", "circle", "triangle"];
+const shapeChoices = ["star", "circle"]; // default
+
 
 export const SparklesCore: React.FC<SparklesCoreProps> = ({
   className = "",
@@ -54,7 +58,10 @@ export const SparklesCore: React.FC<SparklesCoreProps> = ({
           vx: (Math.random() - 0.5) * 0.15,
           vy: (Math.random() - 0.5) * 0.15,
           color: COLORS[Math.floor(Math.random() * COLORS.length)],
-          shape: SHAPES[Math.floor(Math.random() * SHAPES.length)],
+          // shape: SHAPES[Math.floor(Math.random() * SHAPES.length)],
+          shape: (shapeSet || shapeChoices)[
+            Math.floor(Math.random() * (shapeSet || shapeChoices).length)
+          ],
         });
       }
     };

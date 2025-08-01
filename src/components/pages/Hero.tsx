@@ -143,20 +143,23 @@ import Tilt from "react-parallax-tilt";
 import {useBgTheme} from "@/lib/context/BgThemeContext";
 import {useThemeContext} from "@/lib/context/ThemeContext";
 import {useTextTheme} from "@/lib/context/TextThemeContext";
+import {useFontTheme} from "@/lib/context/FontThemeContext";
 
 export default function Hero() {
   const {theme} = useThemeContext();
   const {currentBgClass} = useBgTheme();
   const {currentTextClass} = useTextTheme();
+  const {currentFontClass} = useFontTheme();
 
   return (
     <section
       id="home"
-      className={`relative min-h-screen w-full overflow-hidden flex items-center justify-center transition-colors duration-2000 ease-in-out 
- ${currentBgClass} `}
+      className={`relative min-h-screen w-full overflow-hidden flex items-center justify-center
+transition-all duration-[2000ms] ease-in-out  
+${currentBgClass} ${currentFontClass}`}
     >
       {/* ✨ Sparkles Background */}
-      <SparklesCore
+      {/* <SparklesCore
         className="absolute inset-0 z-0"
         particleDensity={120}
         minSize={2}
@@ -165,6 +168,20 @@ export default function Hero() {
         glow
         flicker
         speedMultiplier={0.4}
+      /> */}
+      <SparklesCore
+        particleDensity={120}
+        minSize={2}
+        maxSize={4}
+        speedMultiplier={0.4}
+        enableClick={false}
+        glow={theme === "dark"}
+        flicker={theme === "dark"}
+        shapeSet={
+          theme === "dark"
+            ? ["star", "circle", "triangle", "diamond"]
+            : ["star", "circle"]
+        }
       />
 
       {/* 💫 Foreground Content */}

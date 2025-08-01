@@ -5,13 +5,16 @@ import {useState, useEffect, useRef} from "react";
 import {useThemeContext} from "@/lib/context/ThemeContext";
 import {useBgTheme} from "@/lib/context/BgThemeContext";
 import {useTextTheme} from "@/lib/context/TextThemeContext";
+import {useFontTheme} from "@/lib/context/FontThemeContext";
 import {Sun, Moon, Monitor, Snowflake, Cog, Zap} from "lucide-react";
 import {animatedGradientBackgrounds} from "@/components/ui/animatedGradientBackgrounds";
 import {animatedGradientTextColors} from "@/components/ui/animatedGradientTextColors";
+import {fontFamilies} from "@/components/ui/fontFamilies";
 
 export default function Sidebar() {
   const {themeIndex, setThemeIndex} = useBgTheme();
   const {textThemeIndex, setTextThemeIndex} = useTextTheme();
+  const {fontThemeIndex, setFontThemeIndex} = useFontTheme();
 
   const [open, setOpen] = useState(false);
   const {theme, setTheme} = useThemeContext();
@@ -61,7 +64,7 @@ export default function Sidebar() {
         animate={{x: open ? 0 : -sidebarWidth}}
         transition={{type: "spring", stiffness: 260, damping: 25}}
         className="fixed inset-y-0 left-0 z-40 w-72 sm:w-80 border-r border-white/10
-          bg-[#0f172a]/90 backdrop-blur-lg shadow-2xl text-white"
+          bg-[#0f172a]/90 backdrop-blur-lg shadow-2xl text-white overflow-auto hide-scrollbar"
       >
         <div className="space-y-6 p-4">
           <Section title="Colors">
@@ -92,6 +95,23 @@ export default function Sidebar() {
                   }`}
                   aria-label={`Theme ${idx + 1}`}
                 />
+              ))}
+            </div>
+          </Section>
+
+          <Section title="Font Families">
+            <div className="flex flex-wrap justify-center gap-4 max-w-4xl">
+              {fontFamilies.map((fontClass, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setFontThemeIndex(idx)}
+                  className={`flex items-center justify-center h-10 px-3 rounded-full ring-2 ring-white/20 hover:scale-110 transition-transform duration-300 shadow-lg ${
+                    idx === fontThemeIndex ? "ring-4 ring-white" : ""
+                  }`}
+                  aria-label={`Font Theme ${idx + 1}`}
+                >
+                  <span className={`text-sm ${fontClass}`}>Aa</span>
+                </button>
               ))}
             </div>
           </Section>
