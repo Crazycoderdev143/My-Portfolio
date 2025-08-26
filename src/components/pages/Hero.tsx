@@ -154,9 +154,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className={`relative min-h-screen w-full overflow-hidden flex items-center justify-center
-transition-all duration-[2000ms] ease-in-out  
-${currentBgClass} ${currentFontClass}`}
+      className={`relative min-h-screen w-full overflow-hidden flex items-center justify-center transition-colors duration-[2000ms] ease-in-out ${currentBgClass} ${currentFontClass}`}
     >
       {/* ✨ Sparkles Background */}
       {/* <SparklesCore
