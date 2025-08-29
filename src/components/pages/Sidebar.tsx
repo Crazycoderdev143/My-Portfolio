@@ -6,7 +6,7 @@ import {useThemeContext} from "@/lib/context/ThemeContext";
 import {useBgTheme} from "@/lib/context/BgThemeContext";
 import {useTextTheme} from "@/lib/context/TextThemeContext";
 import {useFontTheme} from "@/lib/context/FontThemeContext";
-import {Sun, Moon, Monitor, Snowflake, Cog, Zap} from "lucide-react";
+import {Sun, Moon, Monitor} from "lucide-react";
 import {animationComponents} from "@/lib/context/AnimationThemeContext";
 import {useAnimationTheme} from "@/lib/context/AnimationThemeContext";
 import {animatedGradientBackgrounds} from "@/components/ui/animatedGradientBackgrounds";

@@ -2,10 +2,19 @@
 
 import Image from "next/image";
 import React, {useEffect, useState} from "react";
-import {motion, AnimatePresence} from "framer-motion";
+import {motion, AnimatePresence, TargetAndTransition} from "framer-motion";
 import Tilt from "react-parallax-tilt";
 
-const projects = [
+interface Project {
+  title: string;
+  category: "Web" | "Mobile";
+  description: string;
+  image: string;
+  githubLink: string;
+  projectLink: string;
+}
+
+const projects: Project[] = [
   {
     title: "Portfolio Website",
     category: "Web",
@@ -45,7 +54,7 @@ const projects = [
   },
   {
     title: "Real Estate Backend in Mern",
-    category: "Backend",
+    category: "Web",
     description:
       "Real Estate Backend in Mern for Signup/login and roles and version in this.",
     image: "/images/real-estate-backend.png",
@@ -194,10 +203,16 @@ const projects = [
   },
 ];
 
-const categories = ["All", "Web", "Mobile"];
+const categories: Array<"All" | Project["category"]> = ["All", "Web", "Mobile"];
 
-const cardVariants: Record<string, (i: number) => any> = {
-  hidden: () => ({opacity: 0, y: 60}),
+const cardVariants: Record<
+  "hidden" | "visible",
+  (i: number) => TargetAndTransition
+> = {
+  hidden: () => ({
+    opacity: 0,
+    y: 60,
+  }),
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
@@ -211,8 +226,10 @@ const cardVariants: Record<string, (i: number) => any> = {
 };
 
 const Projects: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [selectedCategory, setSelectedCategory] = useState<
+    "All" | Project["category"]
+  >("All");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const filteredProjects =
     selectedCategory === "All"

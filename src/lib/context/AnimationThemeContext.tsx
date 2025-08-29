@@ -7,6 +7,7 @@ import {
   useEffect,
   ReactNode,
   useRef,
+  FC,
 } from "react";
 
 import {ElectricFlowSparkles} from "@/components/Animations/ElectricFlowSparkles";
@@ -18,6 +19,10 @@ import {IconParticles} from "@/components/Animations/IconParticles";
 import {IconParticles3} from "@/components/Animations/IconParticles3";
 import {IconParticlesCanva} from "@/components/Animations/IconParticlesCanva";
 import {SparklesCore} from "@/components/Animations/Sparkles";
+
+// ✅ Consistent type for all animation components
+
+type AnimationComponent = FC<Record<string, never>>;
 
 export const animationComponents = [
   {name: "Flow Sparkles", Comp: ElectricFlowSparkles},
@@ -34,7 +39,7 @@ export const animationComponents = [
 interface AnimationThemeContextType {
   animationIndex: number;
   setAnimationIndex: (index: number) => void;
-  CurrentAnimation: React.ComponentType<any>;
+  CurrentAnimation: AnimationComponent;
 }
 
 const AnimationThemeContext = createContext<

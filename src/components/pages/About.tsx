@@ -2,7 +2,6 @@
 
 import {motion} from "framer-motion";
 import Tilt from "react-parallax-tilt";
-import { IconParticles } from "../Animations/IconParticles";
 
 const About = () => {
   return (
@@ -52,7 +51,7 @@ const About = () => {
               approach combines thoughtful UI/UX design, scalable architecture,
               and efficient APIs to solve real-world problems through
               technology. Whether it's building from scratch or optimizing
-              existing systems, I’m driven by a passion for quality, innovation,
+              existing systems, I am driven by a passion for quality, innovation,
               and continuous improvement.
             </p>
           </motion.div>

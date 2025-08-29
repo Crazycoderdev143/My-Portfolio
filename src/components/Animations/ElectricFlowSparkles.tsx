@@ -4,9 +4,21 @@ import React, {useEffect, useRef} from "react";
 
 const COLORS = ["#00f0ff", "#1fc9ff", "#00c3ff", "#24f0db"];
 
+type Particle = {
+  x: number;
+  y: number;
+  angle: number;
+  speed: number;
+  size: number;
+  alpha: number;
+  noiseOffset: number;
+  color: string;
+  life: number;
+};
+
 export const ElectricFlowSparkles: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const particles: any[] = [];
+  const particles: Particle[] = [];
 
   useEffect(() => {
     const canvas = canvasRef.current!;

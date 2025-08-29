@@ -2,11 +2,25 @@
 
 import React, {useEffect, useRef} from "react";
 
+
+// ✅ Particle type definition
+type Particle = {
+  x: number;
+  y: number;
+  angle: number;
+  speed: number;
+  size: number;
+  alpha: number;
+  life: number;
+  noiseOffset: number;
+  color: string;
+};
+
 const COLORS = ["#00ffff", "#00eaff", "#00cfff", "#0088ff"];
 
 export const ElectricTrailWithNoise: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const particles: any[] = [];
+  const particles: Particle[] = [];
 
   useEffect(() => {
     const canvas = canvasRef.current!;

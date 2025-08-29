@@ -5,6 +5,14 @@ import React, {useRef, useEffect} from "react";
 const PARTICLE_COUNT = 800;
 const colors = ["#00ffff", "#00eaff", "#00cfff"];
 
+type Particle = {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  color: string;
+};
+
 export const ElectricTrailCanvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouse = useRef({x: 0, y: 0});
@@ -17,13 +25,7 @@ export const ElectricTrailCanvas: React.FC = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const particles: {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      color: string;
-    }[] = [];
+    const particles: Particle[] = [];
 
     const initParticles = () => {
       for (let i = 0; i < PARTICLE_COUNT; i++) {
@@ -37,7 +39,7 @@ export const ElectricTrailCanvas: React.FC = () => {
       }
     };
 
-    const attractToMouse = (p: any) => {
+    const attractToMouse = (p: Particle) => {
       const dx = mouse.current.x - p.x;
       const dy = mouse.current.y - p.y;
       const dist = Math.sqrt(dx * dx + dy * dy);

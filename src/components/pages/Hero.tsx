@@ -62,7 +62,7 @@ export default function Hero() {
           transition={{delay: 0.8, duration: 0.5, ease: "easeOut"}}
           className="mt-2 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient drop-shadow-xl"
         >
-          <span>and I'm a </span>
+          <span>and I am </span>
           <Typewriter
             words={[
               "Full Stack Web & App Developer",

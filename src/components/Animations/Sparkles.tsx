@@ -15,6 +15,20 @@ interface SparklesCoreProps {
   enableClick?: boolean;
 }
 
+type Particle = {
+  x: number;
+  y: number;
+  size: number;
+  alpha: number;
+  speed?: number;
+  vx: number;
+  vy: number;
+  color: string;
+  shape: string;
+  life: number;
+  flickerPhase?: number;
+};
+
 const COLORS = ["#22d3ee", "#3b82f6", "#ec4899", "#f59e0b", "#10b981"];
 const SHAPES = ["circle", "square", "triangle", "star"];
 
@@ -41,8 +55,8 @@ export const SparklesCore: React.FC<SparklesCoreProps> = ({
     let animationFrameId: number;
     let resizeTimeout: NodeJS.Timeout;
 
-    const stableParticles: any[] = [];
-    const dynamicParticles: any[] = [];
+    const stableParticles: Particle[] = [];
+    const dynamicParticles: Particle[] = [];
 
     const availableShapes = shapeSet && shapeSet.length > 0 ? shapeSet : SHAPES;
 
@@ -70,7 +84,7 @@ export const SparklesCore: React.FC<SparklesCoreProps> = ({
     };
 
     // ✨ Shape drawing
-    const drawShape = (p: any) => {
+    const drawShape = (p: Particle) => {
       const x = p.x;
       const y = p.y;
 
@@ -158,7 +172,7 @@ export const SparklesCore: React.FC<SparklesCoreProps> = ({
       // Stable particles
       stableParticles.forEach((p) => {
         if (flicker) {
-          const pulse = Math.sin(Date.now() * 0.003 + p.flickerPhase);
+          const pulse = Math.sin(Date.now() * 0.003 + p.flickerPhase!) * 0.5 + 0.5;
           p.alpha = 0.6 + pulse * 0.2;
         }
         drawShape(p);
