@@ -3,7 +3,6 @@
 import {motion} from "framer-motion";
 import {useState} from "react";
 import Tilt from "react-parallax-tilt";
-import {IconParticles2} from "../Animations/IconParticlesCanva";
 
 type FormFields = "name" | "email" | "mobile" | "message";
 
@@ -95,7 +94,6 @@ export default function Contact() {
       id="contact"
       className="relative py-24 px-6 bg-gradient-to-br from-white to-gray-100 dark:from-neutral-900 dark:to-black overflow-hidden"
     >
-      <IconParticles2 />
       <motion.div
         className="max-w-4xl mx-auto text-center"
         initial={{opacity: 0, y: 60}}

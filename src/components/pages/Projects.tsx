@@ -4,7 +4,6 @@ import Image from "next/image";
 import React, {useEffect, useState} from "react";
 import {motion, AnimatePresence} from "framer-motion";
 import Tilt from "react-parallax-tilt";
-import {IconParticles3} from "../Animations/IconParticles3";
 
 const projects = [
   {
@@ -12,7 +11,7 @@ const projects = [
     category: "Web",
     description:
       "A personal portfolio upgraded from HTML/CSS/JS to Next.js + Tailwind.",
-    image: "/images/Portfolio Home.png",
+    image: "/images/New Portfolio.png",
     githubLink: "https://github.com/Crazycoderdev143/My-Portfolio",
     projectLink: "#",
   },
@@ -35,7 +34,6 @@ const projects = [
       "https://github.com/Crazycoderdev143/Real-Estate-Frontend-in-Mern",
     projectLink: "#",
   },
-
   {
     title: "Global Care",
     category: "Web",
@@ -69,7 +67,7 @@ const projects = [
     title: "Netflix UI Clone",
     category: "Web",
     description: "Netflix UI Clone project.",
-    image: "/images/netflix-ui-clone.png",
+    image: "/images/Netflix.png",
     githubLink: "https://github.com/Crazycoderdev143/Netflix-UI-Clone",
     projectLink: "#",
   },
@@ -77,7 +75,7 @@ const projects = [
     title: "Joke",
     category: "Web",
     description: "Joke app built with HTML, CSS and JavaScript.",
-    image: "/images/joke-html-css-js.png",
+    image: "/images/Joks.png",
     githubLink: "https://github.com/Crazycoderdev143/Joke-html-css-js",
     projectLink: "#",
   },
@@ -85,7 +83,7 @@ const projects = [
     title: "Analog Watch",
     category: "Web",
     description: "Analog Watch project.",
-    image: "/images/analog-watch.png",
+    image: "/images/Analog Watch.png",
     githubLink: "https://github.com/Crazycoderdev143/Analog-Watch",
     projectLink: "#",
   },
@@ -149,7 +147,7 @@ const projects = [
     title: "Personal Portfolio",
     category: "Web",
     description: "Personal Portfolio project.",
-    image: "/images/personal-portfolio.png",
+    image: "/images/Portfolio.png",
     githubLink: "https://github.com/Crazycoderdev143/Personal-Portfolio",
     projectLink: "#",
   },
@@ -157,7 +155,7 @@ const projects = [
     title: "Basic Calc",
     category: "Web",
     description: "Basic Calculator project.",
-    image: "/images/basic-calc.png",
+    image: "/images/Calculator.png",
     githubLink: "https://github.com/Crazycoderdev143/Basic-Calc",
     projectLink: "#",
   },
@@ -165,7 +163,7 @@ const projects = [
     title: "Guess the Number Game",
     category: "Web",
     description: "Guess the Number Game.",
-    image: "/images/guess-the-number-game.png",
+    image: "/images/No.Guessing.png",
     githubLink: "https://github.com/Crazycoderdev143/Guess-the-Number-Game",
     projectLink: "#",
   },
@@ -173,7 +171,7 @@ const projects = [
     title: "Auto Detect Sdky Music player",
     category: "Web",
     description: "Auto Detect Sdky Music player project.",
-    image: "/images/auto-detect-sdky-music-player.png",
+    image: "/images/Sdky Music.png",
     githubLink:
       "https://github.com/Crazycoderdev143/Auto-Detect-Sdky-Music-player",
     projectLink: "#",
@@ -190,8 +188,8 @@ const projects = [
     title: "Drink Music player",
     category: "Web",
     description: "Drink Music player project.",
-    image: "/images/drink-music-player.png",
-    githubLink: "https://github.com/Crazycoderdev143/Drink-Music-player",
+    image: "/images/Static-Music-player.png",
+    githubLink: "https://github.com/Crazycoderdev143/Static-Music-player",
     projectLink: "#",
   },
 ];
@@ -235,8 +233,6 @@ const Projects: React.FC = () => {
       id="projects"
       className="relative py-24 bg-gradient-to-br from-blue-50 via-cyan-100 to-white dark:from-neutral-900 dark:via-neutral-800 dark:to-neutral-900 overflow-hidden"
     >
-      {/* <IconParticles3 /> */}
-
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <motion.h2
           initial={{opacity: 0, y: -30}}
@@ -291,7 +287,7 @@ const Projects: React.FC = () => {
                       src={project.image}
                       alt={project.title}
                       fill
-                      className="object-fill group-hover:scale-110 transition-transform duration-500"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
 
                     {/* Overlay Gradient */}

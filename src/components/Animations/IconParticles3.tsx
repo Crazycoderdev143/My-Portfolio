@@ -164,7 +164,7 @@ export const IconParticles3: React.FC = () => {
     // const handleMove = (e: MouseEvent | TouchEvent) => {
     //   const x = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
     //   const y = e instanceof MouseEvent ? e.clientY : e.touches[0].clientY;
-    //   spawn(x, y, 8);
+    //   spawn(x, y, 1);
     // };
     // window.addEventListener("mousemove", handleMove);
     // window.addEventListener("touchmove", handleMove);

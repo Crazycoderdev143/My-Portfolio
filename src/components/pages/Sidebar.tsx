@@ -7,6 +7,8 @@ import {useBgTheme} from "@/lib/context/BgThemeContext";
 import {useTextTheme} from "@/lib/context/TextThemeContext";
 import {useFontTheme} from "@/lib/context/FontThemeContext";
 import {Sun, Moon, Monitor, Snowflake, Cog, Zap} from "lucide-react";
+import {animationComponents} from "@/lib/context/AnimationThemeContext";
+import {useAnimationTheme} from "@/lib/context/AnimationThemeContext";
 import {animatedGradientBackgrounds} from "@/components/ui/animatedGradientBackgrounds";
 import {animatedGradientTextColors} from "@/components/ui/animatedGradientTextColors";
 import {fontFamilies} from "@/components/ui/fontFamilies";
@@ -15,6 +17,7 @@ export default function Sidebar() {
   const {themeIndex, setThemeIndex} = useBgTheme();
   const {textThemeIndex, setTextThemeIndex} = useTextTheme();
   const {fontThemeIndex, setFontThemeIndex} = useFontTheme();
+  const {animationIndex, setAnimationIndex} = useAnimationTheme();
 
   const [open, setOpen] = useState(false);
   const {theme, setTheme} = useThemeContext();
@@ -115,6 +118,7 @@ export default function Sidebar() {
               ))}
             </div>
           </Section>
+
           <Section title="Switch Theme">
             <ButtonRow
               icon={<Moon size={20} />}
@@ -136,23 +140,23 @@ export default function Sidebar() {
             />
           </Section>
 
-          <Section title="Advanced Theme">
-            <ButtonRow
-              icon={<Zap size={20} />}
-              label="Random"
-            />
-            <ButtonRow
-              icon={<Snowflake size={20} />}
-              label="Winter"
-            />
-            <ButtonRow
-              icon={<Cog size={20} />}
-              label="Skills"
-            />
-            <ButtonRow
-              icon={<Cog size={20} />}
-              label="Simple"
-            />
+          <Section title="Animations">
+            <div className="flex flex-col gap-2 max-w-4xl">
+              {animationComponents.map((item, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setAnimationIndex(idx)}
+                  className={`flex items-center justify-between w-full px-3 py-2 rounded-lg 
+          ring-2 ring-white/20 hover:scale-[1.02] transition-transform duration-300 shadow-lg
+          ${idx === animationIndex ? "ring-4 ring-pink-400 bg-white/10" : ""}
+        `}
+                  aria-label={`Animation ${item.name}`}
+                >
+                  <span className="text-sm font-medium">{item.name}</span>
+                  <span className="text-xs opacity-70">#{idx + 1}</span>
+                </button>
+              ))}
+            </div>
           </Section>
         </div>
       </motion.aside>

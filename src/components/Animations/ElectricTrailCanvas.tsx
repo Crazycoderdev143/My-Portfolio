@@ -5,7 +5,7 @@ import React, {useRef, useEffect} from "react";
 const PARTICLE_COUNT = 800;
 const colors = ["#00ffff", "#00eaff", "#00cfff"];
 
-export const SwarmParticles: React.FC = () => {
+export const ElectricTrailCanvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouse = useRef({x: 0, y: 0});
 

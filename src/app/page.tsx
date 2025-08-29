@@ -9,16 +9,6 @@ import Sidebar from "@/components/pages/Sidebar";
 import Contact from "@/components/pages/Contact";
 import Services from "@/components/pages/Services";
 import Projects from "@/components/pages/Projects";
-import {IconParticles} from "@/components/Animations/IconParticles";
-import {IconParticles3} from "@/components/Animations/IconParticles3";
-import {IconParticles2} from "@/components/Animations/IconParticlesCanva";
-import {SwarmParticles} from "@/components/Animations/ElectricTrailCanvas";
-import {ElectricTrailHeavy} from "@/components/Animations/ElectricTrailHeavy";
-import {ElectricFlowSparkles} from "@/components/Animations/ElectricFlowSparkles";
-import {ExplodingTrailCanvas} from "@/components/Animations/ExplodingTrailCanvas";
-import {ElectricTrailWithNoise} from "@/components/Animations/ElectricTrailWithNoise";
-import { SocialMediaLinks } from "@/components/ui/SocialMediaLinks";
-
 export default function Home() {
   return (
     <>
@@ -55,14 +45,6 @@ export default function Home() {
       </Head>
       <main className="scroll-smooth bg-white dark:bg-neutral-900 text-gray-900 dark:text-white">
         <Header />
-        {/* <IconParticles2 /> */}
-        {/* <IconParticles3 /> */}
-        {/* <IconParticles /> */}
-        {/* <ExplodingTrailCanvas /> */}
-        {/* <ElectricTrailWithNoise /> */}
-        {/* <ElectricTrailHeavy /> */}
-        {/* <SwarmParticles /> */}
-        {/* <ElectricFlowSparkles /> */}
         <Sidebar />
         <Hero />
         <About />

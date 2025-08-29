@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, {useEffect, useRef} from "react";
@@ -30,6 +29,7 @@ import {
   SiVercel,
   SiRender,
 } from "react-icons/si";
+import {createRoot} from "react-dom/client";
 
 const ICONS = [
   SiHtml5,
@@ -91,68 +91,55 @@ const ICON_COLORS = [
 
 const TOTAL_ICONS = 25;
 
-export const IconParticles2: React.FC = () => {
+export const IconParticlesCanva: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const iconsRef = useRef<HTMLDivElement[]>([]);
   const mouse = useRef({x: window.innerWidth / 2, y: window.innerHeight / 2});
+  const frameRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const icons: HTMLDivElement[] = [];
+    if (!containerRef.current) return;
     const container = containerRef.current;
-    if (!container) return;
 
-    // Create icons
-    for (let i = 0; i < TOTAL_ICONS; i++) {
-      const iconWrapper = document.createElement("div");
-      iconWrapper.style.position = "absolute";
-      iconWrapper.style.left = Math.random() * window.innerWidth + "px";
-      iconWrapper.style.top = Math.random() * window.innerHeight + "px";
-      iconWrapper.style.pointerEvents = "none";
-      iconWrapper.style.transition = "transform 0.1s linear";
+    const particles = Array.from({length: TOTAL_ICONS}, (_, i) => {
+      const wrapper = document.createElement("div");
+      wrapper.style.position = "absolute";
+      wrapper.style.pointerEvents = "none";
+
+      container.appendChild(wrapper);
 
       const Icon = ICONS[i % ICONS.length];
       const color = ICON_COLORS[i % ICON_COLORS.length];
 
-      const element = (
+      const root = createRoot(wrapper);
+      root.render(
         <Icon
           size={24}
           color={color}
         />
       );
-      iconWrapper.appendChild(document.createElement("div"));
-      icons.push(iconWrapper);
-      container.appendChild(iconWrapper);
 
-      // Inject react icon manually
-      // Hack to inject icon inside native DOM
-      import("react-dom/client").then(({ createRoot }) => {
-        const root = createRoot(iconWrapper.firstChild as Element);
-        root.render(element);
-      });
-
-    }
-
-    iconsRef.current = icons;
-
-    const particles = icons.map(() => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-    }));
+      return {
+        el: wrapper,
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+      };
+    });
 
     const animate = () => {
-      for (let i = 0; i < icons.length; i++) {
-        const p = particles[i];
+      particles.forEach((p) => {
         const dx = p.x - mouse.current.x;
         const dy = p.y - mouse.current.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
+
         if (dist < 120) {
           const angle = Math.atan2(dy, dx);
           const repel = (120 - dist) / 120;
           p.vx += Math.cos(angle) * repel * 0.6;
           p.vy += Math.sin(angle) * repel * 0.6;
         }
+
         p.x += p.vx;
         p.y += p.vy;
         p.vx *= 0.96;
@@ -161,30 +148,30 @@ export const IconParticles2: React.FC = () => {
         if (p.x < 0 || p.x > window.innerWidth) p.vx *= -1;
         if (p.y < 0 || p.y > window.innerHeight) p.vy *= -1;
 
-        icons[i].style.transform = `translate(${p.x}px, ${p.y}px)`;
-      }
-      requestAnimationFrame(animate);
+        p.el.style.transform = `translate(${p.x}px, ${p.y}px)`;
+      });
+
+      frameRef.current = requestAnimationFrame(animate);
     };
 
     const handleMove = (e: MouseEvent | TouchEvent) => {
-      if (e instanceof MouseEvent) {
+      if ("clientX" in e) {
         mouse.current = {x: e.clientX, y: e.clientY};
       } else {
-        mouse.current = {
-          x: e.touches[0].clientX,
-          y: e.touches[0].clientY,
-        };
+        mouse.current = {x: e.touches[0].clientX, y: e.touches[0].clientY};
       }
     };
 
     window.addEventListener("mousemove", handleMove);
     window.addEventListener("touchmove", handleMove);
-    animate();
+
+    frameRef.current = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener("mousemove", handleMove);
       window.removeEventListener("touchmove", handleMove);
-      icons.forEach((icon) => icon.remove());
+      if (frameRef.current) cancelAnimationFrame(frameRef.current);
+      particles.forEach((p) => p.el.remove());
     };
   }, []);
 
@@ -195,4 +182,3 @@ export const IconParticles2: React.FC = () => {
     />
   );
 };
-

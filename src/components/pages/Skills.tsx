@@ -582,44 +582,73 @@ export default function Skills() {
       id="skills"
       className="py-20 px-6 bg-gradient-to-br from-cyan-100 via-white to-cyan-200 dark:from-neutral-900 dark:via-neutral-800 dark:to-black"
     >
-      <motion.h2
-        initial={{opacity: 0, y: -40}}
-        whileInView={{opacity: 1, y: 0}}
-        viewport={{once: true}}
-        transition={{duration: 0.7}}
-        className="text-4xl sm:text-5xl font-extrabold text-center bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-lg mb-12"
+      <Tilt
+        tiltMaxAngleX={20}
+        tiltMaxAngleY={20}
+        glareEnable
+        glareMaxOpacity={0.3}
+        scale={1.05}
+        transitionSpeed={1500}
       >
-        My Skills & Tech Stack
-      </motion.h2>
+        <motion.h2
+          initial={{opacity: 0, y: -40}}
+          whileInView={{opacity: 1, y: 0}}
+          viewport={{once: true}}
+          transition={{duration: 0.7}}
+          className="text-4xl sm:text-5xl font-extrabold text-center bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-lg mb-12"
+        >
+          My Skills & Tech Stack
+        </motion.h2>
+      </Tilt>
 
-      <div className="flex justify-center mb-6">
-        <input
-          type="text"
-          placeholder="Search skills..."
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-          className="px-4 py-2 rounded-lg border border-gray-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm w-80 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-        />
-      </div>
+      {/* SEARCH & FILTER */}
+      <Tilt
+        tiltMaxAngleX={20}
+        tiltMaxAngleY={20}
+        glareEnable
+        glareMaxOpacity={0.3}
+        scale={1.05}
+        transitionSpeed={1500}
+      >
+        <motion.div className="flex justify-center mb-6">
+          <input
+            type="text"
+            placeholder="Search skills..."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            className="px-4 py-2 rounded-lg border border-gray-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm w-80 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+          />
+        </motion.div>
+      </Tilt>
 
-      <div className="flex justify-center gap-4 mb-10 flex-wrap">
-        {categories.map((cat) => (
-          <motion.button
-            whileHover={{scale: 1.1}}
-            whileTap={{scale: 0.95}}
-            key={cat}
-            onClick={() => setSelected(cat)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md ${
-              selected === cat
-                ? "bg-cyan-500 text-white"
-                : "bg-gray-200 dark:bg-neutral-700 text-gray-700 dark:text-gray-300"
-            }`}
-          >
-            {cat}
-          </motion.button>
-        ))}
-      </div>
+      <Tilt
+        tiltMaxAngleX={20}
+        tiltMaxAngleY={20}
+        glareEnable
+        glareMaxOpacity={0.3}
+        scale={1.05}
+        transitionSpeed={1500}
+      >
+        <motion.div className="flex justify-center gap-4 mb-10 flex-wrap">
+          {categories.map((cat) => (
+            <motion.button
+              whileHover={{scale: 1.1}}
+              whileTap={{scale: 0.95}}
+              key={cat}
+              onClick={() => setSelected(cat)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md ${
+                selected === cat
+                  ? "bg-cyan-500 text-white"
+                  : "bg-gray-200 dark:bg-neutral-700 text-gray-700 dark:text-gray-300"
+              }`}
+            >
+              {cat}
+            </motion.button>
+          ))}
+        </motion.div>
+      </Tilt>
 
+      {/* SKILLS GRID */}
       <motion.div
         initial="hidden"
         whileInView="visible"
