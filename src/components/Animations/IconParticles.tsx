@@ -170,7 +170,7 @@ export const IconParticles: React.FC = () => {
     return () => {
       window.removeEventListener("mousemove", handleMove);
       window.removeEventListener("touchmove", handleMove);
-      frameRef.current && cancelAnimationFrame(frameRef.current);
+      frameRef.current ? cancelAnimationFrame(frameRef.current) : null; 
       particles.forEach((p) => p.el.remove());
     };
   }, []);

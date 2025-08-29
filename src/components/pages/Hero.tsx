@@ -49,7 +49,7 @@ export default function Hero() {
             className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight drop-shadow-xl  transition-colors duration-2000 ease-in-out  ${currentTextClass}`}
           >
             <div className="text-base sm:text-lg md:text-xl lg:text-2xl mb-1">
-              Hey, It's Me
+              Hey, It&apos;s Me
             </div>
             Dileep Nishad
           </motion.h1>
@@ -62,7 +62,7 @@ export default function Hero() {
           transition={{delay: 0.8, duration: 0.5, ease: "easeOut"}}
           className="mt-2 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient drop-shadow-xl"
         >
-          <span>and I am </span>
+          <span>and I&apos;m a </span>
           <Typewriter
             words={[
               "Full Stack Web & App Developer",

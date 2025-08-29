@@ -106,29 +106,29 @@ export const IconParticles3: React.FC = () => {
   useEffect(() => {
     let animationId: number;
 
-    const spawn = (x: number, y: number, count = 10) => {
-      setParticles((prev) => [
-        ...prev,
-        ...Array.from({length: count}).map((_, i) => {
-          const angle = Math.random() * 2 * Math.PI;
-          const speed = Math.random() * 2.5 + 0.5;
-          const Icon = ICONS[Math.floor(Math.random() * ICONS.length)];
-          return {
-            id: particleId.current++,
-            x,
-            y,
-            vx: Math.cos(angle) * speed,
-            vy: Math.sin(angle) * speed,
-            size: 24 + Math.random() * 8,
-            opacity: 1,
-            life: 100,
-            bounce: true,
-            delay: i * 30,
-            Icon,
-          };
-        }),
-      ]);
-    };
+    // const spawn = (x: number, y: number, count = 10) => {
+    //   setParticles((prev) => [
+    //     ...prev,
+    //     ...Array.from({length: count}).map((_, i) => {
+    //       const angle = Math.random() * 2 * Math.PI;
+    //       const speed = Math.random() * 2.5 + 0.5;
+    //       const Icon = ICONS[Math.floor(Math.random() * ICONS.length)];
+    //       return {
+    //         id: particleId.current++,
+    //         x,
+    //         y,
+    //         vx: Math.cos(angle) * speed,
+    //         vy: Math.sin(angle) * speed,
+    //         size: 24 + Math.random() * 8,
+    //         opacity: 1,
+    //         life: 100,
+    //         bounce: true,
+    //         delay: i * 30,
+    //         Icon,
+    //       };
+    //     }),
+    //   ]);
+    // };
 
     const update = () => {
       setParticles((prev) =>
@@ -155,7 +155,7 @@ export const IconParticles3: React.FC = () => {
         })
       );
 
-      animationId = requestAnimationFrame(update);
+      // animationId = requestAnimationFrame(update);
     };
 
     

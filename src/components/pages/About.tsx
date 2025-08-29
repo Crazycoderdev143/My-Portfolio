@@ -50,9 +50,9 @@ const About = () => {
               following modern development standards and best practices. My
               approach combines thoughtful UI/UX design, scalable architecture,
               and efficient APIs to solve real-world problems through
-              technology. Whether it's building from scratch or optimizing
-              existing systems, I am driven by a passion for quality, innovation,
-              and continuous improvement.
+              technology. Whether it&apos;s building from scratch or optimizing
+              existing systems, I&apos;m driven by a passion for quality,
+              innovation, and continuous improvement.
             </p>
           </motion.div>
         </Tilt>
