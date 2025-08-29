@@ -104,7 +104,7 @@ export const IconParticles3: React.FC = () => {
 
   // ⚡ Active motion icons (cursor trail)
   useEffect(() => {
-    let animationId: number;
+    // let animationId: number;
 
     // const spawn = (x: number, y: number, count = 10) => {
     //   setParticles((prev) => [
